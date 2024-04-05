@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import diceImage from '../assets/images/dices.svg'
 import PlayZone from './PlayZone'
+
 const Home = () => {
     const[showPlayZone,setShowPlayZone] =useState(false);
 

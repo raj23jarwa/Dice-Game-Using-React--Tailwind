@@ -12,6 +12,7 @@ const PlayZone = () => {
     const [isRolling, setIsRolling] = useState(false);
     const [msg,setMsg] =useState(true)
     const [selectedNumber, setSelectedNumber] = useState(null); // State to keep track of selected number
+    const [totalScore,setTotalScore]= useState(0);
 
   const toggleRules = () => {
     setShowRules(!showRules);
@@ -24,12 +25,21 @@ const PlayZone = () => {
 
   const resetScore = () => {
     // Function logic for resetting score
+    setTotalScore(0);
+    setSelectedNumber(null);
+    setMsg(true)
   };
 
   const rollDice = () => {
-    // Disable rolling while the animation is in progress
-    if (isRolling) return;
+    if (!selectedNumber) {
+        // If no number is selected, do not roll the dice
+        return;
+    }
 
+    if (isRolling) {
+        // Disable rolling while the animation is in progress
+        return;
+    }
     // Start rolling animation
     setIsRolling(true);
 
@@ -58,6 +68,12 @@ const PlayZone = () => {
     }
 // End rolling animation
 setTimeout(() => {
+     // Check if the selected number matches the rolled dice number
+     if (selectedNumber === randomNumber) {
+        setTotalScore(totalScore + 2); // Earn 2 points for correct guess
+    } else {
+        setTotalScore(totalScore - 2); // Deduct 2 points for incorrect guess
+    }
     setIsRolling(false);
   }, 1000); // Adjust the delay as needed
   
@@ -67,7 +83,7 @@ setTimeout(() => {
     <div className='flex flex-col gap-10'>
       <div className='flex flex-row justify-around w-full h-[151px] gap-[593px]'>
         <div className='flex flex-col whitespace-nowrap'>
-          <span className='total-score mb-[-1rem]'>0</span>
+          <span className='total-score mb-[-1rem]'>{totalScore}</span>
           <span className='capitalize mt-[-1rem]'>total score</span>
         </div>
         <div className='flex flex-col'>
@@ -101,10 +117,14 @@ setTimeout(() => {
         <div className='flex flex-col gap-6'>
         <button 
         onClick={resetScore}
-        className='border text-black text-[16px] rounded-md border-black px-6 py-2'> Reset Score</button>
+        className='border border-black text-[16px] rounded-md bg-black text-white px-6 py-2 
+        transition duration-300 hover:bg-white hover:text-black hover:border hover:border-black'> Reset Score</button>
         <button 
         onClick={toggleRules}
-        className='border border-black text-[16px] rounded-md bg-black text-white px-6 py-2'>Show Rules</button>
+        className='border border-black text-[16px] rounded-md bg-black text-white px-6 py-2 
+        transition duration-300 hover:bg-white hover:text-black hover:border hover:border-black'>
+            {showRules? 'Hide Rules' :'Show Rules'}
+        </button>
         </div>
       </div>
       {showRules && (
