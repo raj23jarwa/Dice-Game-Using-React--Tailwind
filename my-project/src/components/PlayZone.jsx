@@ -133,11 +133,11 @@ setTimeout(() => {
          <div className='flex ml-4'>
             <p className='text-2xl font-bold'>How to play dice game</p>
          </div>
-         <div className='rules flex flex-col ml-4  items-start'>
-            <span>Select any number</span>
-            <span>Click on dice image</span>
-            <span>after click on  dice  if selected number is equal to dice number you will get same point as dice </span>
-            <span>if you get wrong guess then  2 point will be dedcuted </span>
+         <div className='rules flex flex-col ml-4 md:items-start items-center leading-relaxed'>
+            <span>1.Select any number</span>
+            <span>2.Click on dice image</span>
+            <span>3.after click on  dice  if selected number is equal to dice number you will get same point as dice </span>
+            <span>4.if you get wrong guess then  2 point will be dedcuted </span>
          </div>
       </div>
       </div>
