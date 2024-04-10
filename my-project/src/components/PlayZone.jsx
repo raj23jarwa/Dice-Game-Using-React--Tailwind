@@ -70,7 +70,7 @@ const PlayZone = () => {
 setTimeout(() => {
      // Check if the selected number matches the rolled dice number
      if (selectedNumber === randomNumber) {
-        setTotalScore(totalScore + 2); // Earn 2 points for correct guess
+        setTotalScore(totalScore + selectedNumber); // Earn 2 points for correct guess
     } else {
         setTotalScore(totalScore - 2); // Deduct 2 points for incorrect guess
     }
@@ -111,7 +111,7 @@ setTimeout(() => {
       </div>
       <div className='flex justify-center items-center flex-col gap-8'>
         <div className='flex flex-col gap-5'>
-        <img src={diceImage} alt="" onClick={rollDice} className= {`w-64 ${isRolling ? 'animate-spin-slow' : ''}`} />
+        <img src={diceImage} alt="" onClick={rollDice} className= {`w-64 ${isRolling ? 'animate-spin-slow' : ''} ${selectedNumber ? 'cursor-pointer' : ''}`} />
         <span className='text-2xl font-semibold capitalize'>click on dice to roll</span>
         </div>
         <div className='flex flex-col gap-6'>
