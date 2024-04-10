@@ -11,11 +11,11 @@ const Home = () => {
     return (
         <>
         {!showPlayZone && (
-            <div className='flex flex-row justify-center items-center w-full h-screen'>
+            <div className='flex md:flex-row flex-col justify-center items-center w-full h-screen'>
                 <div className=''>
-                    <img src={diceImage} alt="" />
+                    <img src={diceImage} alt="" className='max-w-fill h-auto' />
                 </div>
-                <div className='flex flex-col'>
+                <div className='flex flex-col items-center'>
                     <p className='text-[96px] whitespace-nowrap font-bold uppercase'>dice game</p>
                     <div className="flex  justify-end">
                         <button 

@@ -80,11 +80,11 @@ setTimeout(() => {
   };
   return (
     <>
-    <div className='flex flex-col gap-10'>
-      <div className='flex flex-row justify-around w-full h-[151px] gap-[593px]'>
+    <div className='flex flex-col md:gap-10 gap-8 '>
+      <div className='flex md:flex-row flex-col md:justify-around justify-center items-center w-full md:h-[151px] md:gap-[593px] gap-2'>
         <div className='flex flex-col whitespace-nowrap'>
           <span className='total-score mb-[-1rem]'>{totalScore}</span>
-          <span className='capitalize mt-[-1rem]'>total score</span>
+          <span className='capitalize  mt-[-1rem]'>total score</span>
         </div>
         <div className='flex flex-col'>
         {msg && (
@@ -96,7 +96,7 @@ setTimeout(() => {
               {[1, 2, 3, 4, 5, 6].map((number) => (
                 <div
                   key={number}
-                  className={`number-button ${selectedNumber === number ? 'bg-black text-white' : ''}`}
+                  className={`number-button w-[50px] h-[50px] ${selectedNumber === number ? 'bg-black text-white' : ''}`}
                   onClick={() => toggleMsg(number)}
                 >
                   {number}
@@ -111,7 +111,7 @@ setTimeout(() => {
       </div>
       <div className='flex justify-center items-center flex-col gap-8'>
         <div className='flex flex-col gap-5'>
-        <img src={diceImage} alt="" onClick={rollDice} className= {isRolling ? 'animate-spin-slow' : ''} />
+        <img src={diceImage} alt="" onClick={rollDice} className= {`w-64 ${isRolling ? 'animate-spin-slow' : ''}`} />
         <span className='text-2xl font-semibold capitalize'>click on dice to roll</span>
         </div>
         <div className='flex flex-col gap-6'>
